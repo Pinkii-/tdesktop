@@ -2147,7 +2147,17 @@ void HistoryBlock::clear(bool leaveItems) {
 	}
 }
 
+#include <iostream>
+
 void HistoryBlock::removeItem(HistoryItem *item) {
+	std::string message = item->originalText().text.toUtf8().constData();
+	std::string channelName = "";
+	std::string userName = item->author()->shortName().toUtf8().constData();
+	std::string date = item->date.toString(QString::fromStdString("hh:mm")).toUtf8().constData();
+	if (auto channel = this->history->peer->asChannel()) {
+		channelName = channel->shortName().toUtf8().constData();
+	}
+	std::cout << "trying to remove item : "<< date <<  " : " << userName << "@" << channelName << " : " << message << std::endl;
 	t_assert(item->block() == this);
 
 	int blockIndex = indexInHistory();
