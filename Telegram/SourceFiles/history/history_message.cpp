@@ -631,6 +631,10 @@ QString formatViewsCount(int32 views) {
 	return qsl("1");
 }
 
+void HistoryMessage::almostRemoving() {
+	_timeText.append(QString::fromStdString(" Removed"));
+}
+
 void HistoryMessage::initTime() {
 	if (auto msgsigned = Get<HistoryMessageSigned>()) {
 		_timeWidth = msgsigned->maxWidth();

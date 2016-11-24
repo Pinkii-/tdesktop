@@ -598,6 +598,10 @@ void HistoryItem::clickHandlerPressedChanged(const ClickHandlerPtr &p, bool pres
 
 void HistoryItem::destroy() {
 	// All this must be done for all items manually in History::clear(false)!
+	std::cout << "DESTROYIIINNHH SSHIIIET" << std::endl;
+
+	almostRemoving();
+	return;
 	eraseFromOverview();
 
 	bool wasAtBottom = history()->loadedAtBottom();

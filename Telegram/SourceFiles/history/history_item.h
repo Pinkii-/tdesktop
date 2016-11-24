@@ -20,6 +20,7 @@ Copyright (c) 2014-2016 John Preston, https://desktop.telegram.org
 */
 #pragma once
 
+#include <iostream>
 #include "core/runtime_composer.h"
 
 class HistoryElement {
@@ -444,6 +445,10 @@ TextSelection shiftSelection(TextSelection selection, const Text &byText);
 
 class HistoryItem : public HistoryElement, public RuntimeComposer, public ClickHandlerHost {
 public:
+	virtual void almostRemoving() {
+		std::cout << "Calling to almostRemoving" << std::endl;
+	}
+
 	int resizeGetHeight(int width) {
 		if (_flags & MTPDmessage_ClientFlag::f_pending_init_dimensions) {
 			_flags &= ~MTPDmessage_ClientFlag::f_pending_init_dimensions;

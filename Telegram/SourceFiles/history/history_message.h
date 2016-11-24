@@ -43,6 +43,8 @@ public:
 		return _create(history, msgId, flags, replyTo, viaBotId, date, from, game, markup);
 	}
 
+	void almostRemoving() override;
+
 	void initTime();
 	void initMedia(const MTPMessageMedia *media);
 	void initMediaFromDocument(DocumentData *doc, const QString &caption);
@@ -185,6 +187,7 @@ private:
 
 	QString _timeText;
 	int _timeWidth = 0;
+	bool removed = false;
 
 	struct CreateConfig {
 		MsgId replyTo = 0;

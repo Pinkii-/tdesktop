@@ -1,3 +1,4 @@
+#!/bin/bash
 set -e
 FullExecPath=$PWD
 pushd `dirname $0` > /dev/null
@@ -26,4 +27,3 @@ cd ../..
 
 cd $FullExecPath
 exit
-
